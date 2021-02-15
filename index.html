@@ -1,39 +1,26 @@
 ---
 layout: default
-title: Home
 ---
 
-<div class="home">
+{% for post in paginator.posts %}
+<section>
+  <h2>
+    <a href='{{ site.url }}{{ post.url }}' title='{{ post.title }}'>
+      {{ post.title }}
+    </a>
+  </h2>
+  
+  <p>{{ post.excerpt | strip_html | truncate: 250 }}</p>
+</section>       
+{% endfor %}
 
-  <ul class="posts">
-    {% for post in paginator.posts %}
-    <li>
-      <h1 >{{ post.title }}</h1>
-      <span>{{ post.date | date: "%b %-d, %Y" }}</span>
-      {{ post.excerpt }}
-      <div class="continue">
-        <a href="{{ post.url | prepend: site.baseurl }}">&bull;&bull;&bull;</a>
-      </div>
-    </li>
-    {% endfor %}
-  </ul>
+{% if paginator.previous_page %}
+<a href='{{ site.url }}{{ paginator.previous_page_path }}'>Previous</a>
+{% endif %}
 
-  <div class="pagination">
-    {% if paginator.previous_page %}
-      {% if page == 2 %}
-        <a class="page-link" href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">prv</a>
-      {% else %}
-        <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">prv</a>
-      {% endif %}
-    {% else %}
-      <span class="page-link">prv</span>
-    {% endif %}
+&mdash; {{ paginator.page }} of {{ paginator.total_pages }} &mdash;
 
-    {% if paginator.next_page %}
-      <a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">nxt</a>
-    {% else %}
-      <span class="page-link">nxt</span>
-    {% endif %}
-  </div>
+{% if paginator.next_page %}
+<a href='{{ site.url }}{{ paginator.next_page_path }}'>Next</a>
+{% endif %}
 
-</div>

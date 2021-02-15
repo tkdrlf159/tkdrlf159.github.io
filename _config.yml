@@ -1,22 +1,28 @@
-# Site settings
-title: "Typewriter"
-description: "So I was feeling nostalgic."
-baseurl: ""
-url: "http://alixedi.github.io"
+name: "Jekyll true minimal theme"
+description: "Lightweight theme"
 
-# Build settings
+url: '' 
+baseurl: ''
+
 markdown: kramdown
-permalink: pretty
-highlighter: pygments
-paginate: 3
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+highlighter: rouge
 
-# Links
-links:
-  - title: "abt"
-    url: /about
-  - title: "twt"
-    url: http://twitter.com/alixedi
-  - title: "git"
-    url: http://github.com/alixedi
-  - title: "rss"
-    url: /feed.xml
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-paginate
+paginate: 10
+paginate_path: /page-:num
+
+#disqus-id: your-disqus-id
+
+source: .
+destination: ./_site
+
+sass:
+    style: :compressed
+    sass_dir: assets/css/
+
