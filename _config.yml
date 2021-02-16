@@ -1,7 +1,7 @@
-name: "Jekyll true minimal theme"
-description: "Lightweight theme"
+name: "Dev parkSangKil Theme Test HomePage"
+description: "Dev psk config Update Test"
 
-url: 'https://tkdrlf159.github.io/' 
+url: 'https://tkdrlf159.github.io' 
 baseurl: ''
 
 markdown: kramdown
