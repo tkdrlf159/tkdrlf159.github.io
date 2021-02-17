@@ -2,39 +2,23 @@
 layout: default
 title: Project
 ---
-<h2>Project</h2>
+<!-- <h2>Project</h2> -->
+<div>모던 자바 인 액션</div>
 <ul>
 	<hr>
-	<div>모던 자바 인 액션</div>
-	  {% for modern in site.moderns %}
-	  	{%unless modern.next%}
-	      <h3>{{ modern.date | date: '%Y-%m' }}</h3>
-	    {% else %}
-	      {% capture year %}{{ modern.date | date: '%Y-%m' }}{% endcapture %}
-	      {% capture nyear %}{{ modern.next.date | date: '%Y-%m' }}{% endcapture %}
-	      {% if year != nyear %}
-	        <h3>{{ modern.date | date: '%Y-%m' }}</h3>
-	      {% endif %}
-	    {% endunless%}
-	    <li><a href="{{site.url}}{{ modern.url }}">{{ modern.title }}</a></li>
-	  {% endfor %}
+	{% for post in site.posts %}
+		{% unless post.next %}
+			<h3>{{ post.date | date: '%Y-%m' }}</h3>
+		{% else %}
+		{% capture year %}{{ post.date | date: '%Y-%m' }}{% endcapture %}
+		{% capture nyear %}{{ post.next.date | date: '%Y-%m' }}{% endcapture %}
+			{% if year != nyear %}
+				<h3>{{ post.date | date: '%Y-%m' }}</h3>
+			{% endif %}
+		{% endunless %}
+    <li><a href="{{site.url}}{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
 	<hr>
 </ul>
 <hr>
-<h2>Archive</h2>
-<ul>
-  {% for post in site.posts %}
-    {% unless post.next %}
-      <h3>{{ post.date | date: '%Y-%m' }}</h3>
-    {% else %}
-      {% capture year %}{{ post.date | date: '%Y-%m' }}{% endcapture %}
-      {% capture nyear %}{{ post.next.date | date: '%Y-%m' }}{% endcapture %}
-      {% if year != nyear %}
-        <h3>{{ post.date | date: '%Y-%m' }}</h3>
-      {% endif %}
-    {% endunless %}
-
-    <li><a href="{{site.url}}{{ post.url }}">{{ post.title }}</a></li>
-  {% endfor %}
-</ul>
 
