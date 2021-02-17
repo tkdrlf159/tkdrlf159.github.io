@@ -3,21 +3,21 @@ layout: default
 ---
 <h2>Project</h2>
 <ul>
-<hr>
-<div>모던 자바 인 액션</div>
-  {% for modern in site.moderns %}
-  	{%unless modern.next%}
-      <h3>{{ modern.date | date: '%Y-%m' }}</h3>
-    {% else %}
-      {% capture year %}{{ modern.date | date: '%Y-%m' }}{% endcapture %}
-      {% capture nyear %}{{ modern.next.date | date: '%Y-%m' }}{% endcapture %}
-      {% if year != nyear %}
-        <h3>{{ modern.date | date: '%Y-%m' }}</h3>
-      {% endif %}
-    {% endunless%}
-
-    <li><a href="{{site.url}}{{ modern.url }}">{{ modern.title }}</a></li>
-  {% endfor %}
+	<hr>
+	<div>모던 자바 인 액션</div>
+	  {% for modern in site.moderns %}
+	  	{%unless modern.next%}
+	      <h3>{{ modern.date | date: '%Y-%m' }}</h3>
+	    {% else %}
+	      {% capture year %}{{ modern.date | date: '%Y-%m' }}{% endcapture %}
+	      {% capture nyear %}{{ modern.next.date | date: '%Y-%m' }}{% endcapture %}
+	      {% if year != nyear %}
+	        <h3>{{ modern.date | date: '%Y-%m' }}</h3>
+	      {% endif %}
+	    {% endunless%}
+	
+	    <li><a href="{{site.url}}{{ modern.url }}">{{ modern.title }}</a></li>
+	  {% endfor %}
+	</ul>
 </hr>
-</ul>
 
